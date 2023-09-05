@@ -39,8 +39,8 @@ dataDescription <- data.frame(
   note = c("",
            ""),
   download_MM = c(
-    '<a href="http://127.0.0.1:5535/MM_2006_RNF43.docx"> "MM 2006 RNF43"</a>',
-    '<a href="http://127.0.0.1:5535/MM_2434_2660.docx"> "MM 2434-2660"</a>')
+    '<a href="https://kristinagomoryova.shinyapps.io/ms_shiny_bryjalab/MM_2006_RNF43.docx"> "MM 2006 RNF43"</a>',
+    '<a href="https://kristinagomoryova.shinyapps.io/ms_shiny_bryjalab/MM_2434_2660.docx"> "MM 2434-2660"</a>')
 )
 
 description_page <- tabPanel(
@@ -106,6 +106,27 @@ findProtein_page <- tabPanel(
   ))
 )
 
+###################################  How to use this app tab  #####################################
+
+howTo_page <- tabPanel(
+  title = "How to use this app",
+  titlePanel = "How to use this app",
+  hr(),
+  h2("Welcome to the database of mass spectrometry experiments performed in Bryjalab!"),
+  p("Here you will find more details on how to run this app and what you can do in individual tabs: "),
+  tags$ul(
+    tags$li(tags$b("Explore dataset"), " - in this tab you can explore the datasets we produced, plot the volcano plot and perform Gene ontology analysis using gprofiler2"),
+    tags$li(tags$b("Find protein"), " - in this tab you can find protein of your interest across datasets and whether it was up/downregulated in any contrast"),
+    tags$li(tags$b("Description"), " - in this tab you can find description of particular proteomic experiment")
+  ),
+  p("What to pay attention to: "),
+  tags$ul(
+    tags$li("To display a volcano plot, all three arguments: logFC, adjusted pvalue and annotation MUST be selected"),
+    tags$li("To inspect selected proteins from the volcano plot, use the 'Box Select' tool "),
+    tags$li("To run gene ontology, Annotation MUST be set to gene names or majority protein IDs")
+  )
+)
+
 #########################################  UI  #############################################
 ui <- navbarPage(
   title = "MS datasets in Bryjalab",
@@ -113,7 +134,8 @@ ui <- navbarPage(
   verbatimTextOutput("auth_output"),
   exploreDataset_page,
   findProtein_page,
-  description_page
+  description_page,
+  howTo_page
 )
 
 ui <- secure_app(ui)
