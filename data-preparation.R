@@ -7,8 +7,17 @@ library(stringr)
 
 # Prepare the data
 
+update_genenames <- function(){
+#  date <- as.character(Sys.Date())
+#  filename <- paste0("HGNC_genenames_", date, ".RData")
+  filename <- paste0("HGNC_genenames_newest", ".RData")
+  genenames_newest <- getCurrentHumanMap()
+  save(genenames_newest, file = filename) 
+}
+
+update_genenames()
+
 ingest_data_default <- function(param) {
-  
   data <- read.csv(paste0(param$dataset, ".csv"))
   subset <- data %>% dplyr::select(
     GeneID,
@@ -16,6 +25,7 @@ ingest_data_default <- function(param) {
     starts_with("adjpval"),
     starts_with("dataset")
   )
+  subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   subset$dataset <- param$dataset
   colnames(subset) <- c("GeneID", "logFC", "padj","dataset")
   return(subset)
@@ -32,7 +42,12 @@ load_data <- function() {
     #datasets <- append(datasets, var)
    # print(head(datasets))
   }
-str(datasets)
+  
+  load("HGNC_genenames_newest.RData")
+  for (entry in 1:nrow(database)) {
+    genenames_update <- checkGeneSymbols(database[[entry]]["geneID"], species = "human", map = genenames_newest, unmapped.as.na = FALSE)
+    database[[entry]]["geneID"] <- genenames_update$Suggested.Symbol #replace the original with updated IDs
+  }
 return(datasets)
 }
 
