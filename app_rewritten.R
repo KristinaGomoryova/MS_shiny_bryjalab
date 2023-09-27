@@ -10,6 +10,9 @@ library(gprofiler2)
 library(rentrez)
 library(mygene)
 
+# Insert the functions
+source("data-preparation.R")
+
 data_long <- load_data()
 data_wide <- load_data_wide()
 
