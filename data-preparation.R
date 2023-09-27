@@ -15,7 +15,7 @@ update_genenames <- function(){
   save(genenames_newest, file = filename) 
 }
 
-update_genenames()
+#update_genenames()
 
 ingest_data_default <- function(param) {
   data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
@@ -63,7 +63,7 @@ load_data <- function() {
   return(datasets)
 }
 
-load_data()
+#load_data()
 
 ingest_data_wide <- function(param) {
   data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
@@ -86,15 +86,4 @@ load_data_wide <- function() {
   return(datasets)
 }
 
-load_data_wide()
-
-# k <- read.csv("2006_RNF43.csv")
-# colnames(k) <- gsub("adjpval_", "adjpvalX", colnames(k))
-# colnames(k) <- gsub("logFC_", "logFCX", colnames(k))
-# k <- k %>%
-#   select(GeneID, X, starts_with("logFCX"), starts_with("adjpvalX"))
-# k<-   pivot_longer(k, 
-#                cols = !c(GeneID,X),
-#                names_to = c(".value", "contrast"),
-#                names_sep = "X")
-# colnames(k)[colnames(k) =="X"] <- "ID"
+#load_data_wide()
