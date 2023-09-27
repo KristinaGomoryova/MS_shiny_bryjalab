@@ -8,8 +8,8 @@ library(stringr)
 # Prepare the data
 
 update_genenames <- function(){
-#  date <- as.character(Sys.Date())
-#  filename <- paste0("HGNC_genenames_", date, ".RData")
+  #  date <- as.character(Sys.Date())
+  #  filename <- paste0("HGNC_genenames_", date, ".RData")
   filename <- paste0("HGNC_genenames_newest", ".RData")
   genenames_newest <- getCurrentHumanMap()
   save(genenames_newest, file = filename) 
@@ -22,8 +22,7 @@ ingest_data_default <- function(param) {
   subset <- data %>% dplyr::select(
     GeneID,
     starts_with("logFC"),
-    starts_with("adjpval"),
-    starts_with("dataset")
+    starts_with("adjpval")
   )
   subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   subset$dataset <- param$dataset
@@ -31,24 +30,52 @@ ingest_data_default <- function(param) {
   return(subset)
 }
 
+ingest_data_multipleContrasts <- function(param) {
+  data <- read.csv(paste0(param$dataset, ".csv"))
+  subset <- data %>% dplyr::select(
+    GeneID,
+    starts_with("logFC"),
+    starts_with("adjpval")
+  )
+  
+  colnames(subset) <- gsub("adjpval_", "adjpvalX", colnames(subset))
+  colnames(subset) <- gsub("logFC_", "logFCX", colnames(subset))
+  subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
+  
+  subset <-  pivot_longer(subset, 
+                          cols = !GeneID,
+                          names_to = c(".value", "contrast"),
+                          names_sep = "X")
+  subset <- subset[ , c(1,3,4,2)]
+  
+  subset$dataset <- param$dataset
+  colnames(subset) <- c("GeneID", "logFC", "padj", "contrast", "dataset")
+  subset$contrast <- stringr::str_replace_all(subset$contrast, "\\.", "_vs_") #Escape the dot!
+  return(subset)
+}
+
+ingest_data_noStats <- function(param) {
+  data <- read.csv(paste0(param$dataset, ".csv"))
+  data$GeneID <- sapply(strsplit(data$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
+  data$dataset <- param$dataset
+  return(data)
+}
+
 load_data <- function() {
   database <- read.csv(file.path('metadata.csv'))
-  print(typeof(database))
   datasets <- list()
-
-  for(entry in 1:nrow(database)) {
-    tmp <- ingest_data_default(database[entry, ])
-    datasets[[database[entry, "dataset"]]] <- tmp
-    #datasets <- append(datasets, var)
-   # print(head(datasets))
-  }
   
-  load("HGNC_genenames_newest.RData")
-  for (entry in 1:nrow(database)) {
-    genenames_update <- checkGeneSymbols(database[[entry]]["geneID"], species = "human", map = genenames_newest, unmapped.as.na = FALSE)
-    database[[entry]]["geneID"] <- genenames_update$Suggested.Symbol #replace the original with updated IDs
-  }
-return(datasets)
+  for(entry in 1:nrow(database)) {
+    print(entry)
+    if (database[entry, "type"] == "default"){
+      datasets[[database[entry, "dataset"]]] <- ingest_data_default(database[entry, ])
+    } else if (database[entry, "type"] == "multipleContrasts") {
+      datasets[[database[entry, "dataset"]]] <- ingest_data_multipleContrasts(database[entry, ])
+    } else if (database[entry, "type"] == "noStats") {
+      datasets[[database[entry, "dataset"]]] <- ingest_data_noStats(database[entry, ])
+    }
+  } 
+  return(datasets)
 }
 
 load_data()
