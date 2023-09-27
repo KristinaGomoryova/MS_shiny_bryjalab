@@ -18,7 +18,7 @@ update_genenames <- function(){
 update_genenames()
 
 ingest_data_default <- function(param) {
-  data <- read.csv(paste0(param$dataset, ".csv"))
+  data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
   subset <- data %>% dplyr::select(
     GeneID, X,
     starts_with("logFC"),
@@ -42,7 +42,7 @@ ingest_data_default <- function(param) {
 }
 
 ingest_data_noStats <- function(param) {
-  data <- read.csv(paste0(param$dataset, ".csv"))
+  data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
   data$GeneID <- sapply(strsplit(data$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   data$dataset <- param$dataset
   data <- data[, c(2, 1, 3:ncol(data))]
@@ -66,7 +66,7 @@ load_data <- function() {
 load_data()
 
 ingest_data_wide <- function(param) {
-  data <- read.csv(paste0(param$dataset, ".csv"))
+  data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
   subset <- data %>% dplyr::select(
     GeneID, X,
     starts_with("logFC"),
