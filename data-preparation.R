@@ -20,20 +20,7 @@ update_genenames()
 ingest_data_default <- function(param) {
   data <- read.csv(paste0(param$dataset, ".csv"))
   subset <- data %>% dplyr::select(
-    GeneID,
-    starts_with("logFC"),
-    starts_with("adjpval")
-  )
-  subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
-  subset$dataset <- param$dataset
-  colnames(subset) <- c("GeneID", "logFC", "padj","dataset")
-  return(subset)
-}
-
-ingest_data_multipleContrasts <- function(param) {
-  data <- read.csv(paste0(param$dataset, ".csv"))
-  subset <- data %>% dplyr::select(
-    GeneID,
+    GeneID, X,
     starts_with("logFC"),
     starts_with("adjpval")
   )
@@ -43,7 +30,7 @@ ingest_data_multipleContrasts <- function(param) {
   subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   
   subset <-  pivot_longer(subset, 
-                          cols = !GeneID,
+                          cols = !c(GeneID,X),
                           names_to = c(".value", "contrast"),
                           names_sep = "X")
   subset <- subset[ , c(1,3,4,2)]
@@ -58,6 +45,7 @@ ingest_data_noStats <- function(param) {
   data <- read.csv(paste0(param$dataset, ".csv"))
   data$GeneID <- sapply(strsplit(data$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   data$dataset <- param$dataset
+  data <- data[, c(2, 1, 3:ncol(data))]
   return(data)
 }
 
@@ -66,11 +54,8 @@ load_data <- function() {
   datasets <- list()
   
   for(entry in 1:nrow(database)) {
-    print(entry)
     if (database[entry, "type"] == "default"){
       datasets[[database[entry, "dataset"]]] <- ingest_data_default(database[entry, ])
-    } else if (database[entry, "type"] == "multipleContrasts") {
-      datasets[[database[entry, "dataset"]]] <- ingest_data_multipleContrasts(database[entry, ])
     } else if (database[entry, "type"] == "noStats") {
       datasets[[database[entry, "dataset"]]] <- ingest_data_noStats(database[entry, ])
     }
@@ -79,3 +64,37 @@ load_data <- function() {
 }
 
 load_data()
+
+ingest_data_wide <- function(param) {
+  data <- read.csv(paste0(param$dataset, ".csv"))
+  subset <- data %>% dplyr::select(
+    GeneID, X,
+    starts_with("logFC"),
+    starts_with("adjpval")
+  )
+  subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
+  return(subset)
+}
+
+
+load_data_wide <- function() {
+  database <- read.csv(file.path('metadata.csv'))
+  datasets <- list()
+  for(entry in 1:nrow(database)) {
+      datasets[[database[entry, "dataset"]]] <- ingest_data_wide(database[entry, ])
+    }
+  return(datasets)
+}
+
+load_data_wide()
+
+# k <- read.csv("2006_RNF43.csv")
+# colnames(k) <- gsub("adjpval_", "adjpvalX", colnames(k))
+# colnames(k) <- gsub("logFC_", "logFCX", colnames(k))
+# k <- k %>%
+#   select(GeneID, X, starts_with("logFCX"), starts_with("adjpvalX"))
+# k<-   pivot_longer(k, 
+#                cols = !c(GeneID,X),
+#                names_to = c(".value", "contrast"),
+#                names_sep = "X")
+# colnames(k)[colnames(k) =="X"] <- "ID"
