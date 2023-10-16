@@ -19,6 +19,7 @@ update_genenames <- function(){
 
 ingest_data_default <- function(param) {
   data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
+#  data <- read.csv("database.data/4453_DDA.csv")
   subset <- data %>% dplyr::select(
     GeneID, X,
     starts_with("logFC"),
@@ -33,7 +34,7 @@ ingest_data_default <- function(param) {
                           cols = !c(GeneID,X),
                           names_to = c(".value", "contrast"),
                           names_sep = "X")
-  subset <- subset[ , c(1,3,4,2)]
+  subset <- subset[ , c(1, 4, 5, 3)]
   
   subset$dataset <- param$dataset
   colnames(subset) <- c("GeneID", "logFC", "padj", "contrast", "dataset")
