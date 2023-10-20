@@ -6,6 +6,7 @@ library(here)
 library(stringr)
 
 # Prepare the data
+METADATA_PATH <- here('database', 'metadata.csv')
 
 update_genenames <- function(){
   #  date <- as.character(Sys.Date())
@@ -18,8 +19,7 @@ update_genenames <- function(){
 #update_genenames()
 
 ingest_data_default <- function(param) {
-  data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
-#  data <- read.csv("database.data/4453_DDA.csv")
+  data <- read.csv(here("database", paste0(param$dataset, ".csv")))
   subset <- data %>% dplyr::select(
     GeneID, X,
     starts_with("logFC"),
@@ -34,7 +34,7 @@ ingest_data_default <- function(param) {
                           cols = !c(GeneID,X),
                           names_to = c(".value", "contrast"),
                           names_sep = "X")
-  subset <- subset[ , c(1, 4, 5, 3)]
+  subset <- subset[ , c(1,3,4,2)]
   
   subset$dataset <- param$dataset
   colnames(subset) <- c("GeneID", "logFC", "padj", "contrast", "dataset")
@@ -43,7 +43,7 @@ ingest_data_default <- function(param) {
 }
 
 ingest_data_noStats <- function(param) {
-  data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
+  data <- read.csv(here("database", paste0(param$dataset, ".csv")))
   data$GeneID <- sapply(strsplit(data$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   data$dataset <- param$dataset
   data <- data[, c(2, 1, 3:ncol(data))]
@@ -51,7 +51,7 @@ ingest_data_noStats <- function(param) {
 }
 
 load_data <- function() {
-  database <- read.csv(file.path('metadata.csv'))
+  database <- read.csv(METADATA_PATH)
   datasets <- list()
   
   for(entry in 1:nrow(database)) {
@@ -67,7 +67,7 @@ load_data <- function() {
 #load_data()
 
 ingest_data_wide <- function(param) {
-  data <- read.csv(paste0("database.data/", param$dataset, ".csv"))
+  data <- read.csv(here("database", paste0(param$dataset, ".csv")))
   subset <- data %>% dplyr::select(
     GeneID, X,
     starts_with("logFC"),
@@ -79,7 +79,7 @@ ingest_data_wide <- function(param) {
 
 
 load_data_wide <- function() {
-  database <- read.csv(file.path('metadata.csv'))
+  database <- read.csv(METADATA_PATH)
   datasets <- list()
   for(entry in 1:nrow(database)) {
       datasets[[database[entry, "dataset"]]] <- ingest_data_wide(database[entry, ])
