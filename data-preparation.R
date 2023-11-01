@@ -13,7 +13,7 @@ update_genenames <- function(){
   #  filename <- paste0("HGNC_genenames_", date, ".RData")
   filename <- paste0("HGNC_genenames_newest", ".RData")
   genenames_newest <- getCurrentHumanMap()
-  save(genenames_newest, file = filename) 
+  save(genenames_newest, file = filename)
 }
 
 #update_genenames()
@@ -30,11 +30,11 @@ ingest_data_default <- function(param) {
   colnames(subset) <- gsub("logFC_", "logFCX", colnames(subset))
   subset$GeneID <- sapply(strsplit(subset$GeneID,";"), `[`, 1) # in case there are multiple IDs, take the first one
   
-  subset <-  pivot_longer(subset, 
+  subset <-  pivot_longer(subset,
                           cols = !c(GeneID,X),
                           names_to = c(".value", "contrast"),
                           names_sep = "X")
-  subset <- subset[ , c(1,3,4,2)]
+  subset <- subset[ , c(1,4,5,3)]
   
   subset$dataset <- param$dataset
   colnames(subset) <- c("GeneID", "logFC", "padj", "contrast", "dataset")
@@ -53,15 +53,15 @@ ingest_data_noStats <- function(param) {
 load_data <- function() {
   database <- read.csv(METADATA_PATH)
   datasets <- list()
-  
-  for(entry in 1:nrow(database)) {
-    if (database[entry, "type"] == "default"){
-      datasets[[database[entry, "dataset"]]] <- ingest_data_default(database[entry, ])
-    } else if (database[entry, "type"] == "noStats") {
-      datasets[[database[entry, "dataset"]]] <- ingest_data_noStats(database[entry, ])
-    }
-  } 
-  return(datasets)
+}
+for(entry in 1:nrow(database)) {
+  if (database[entry, "type"] == "default"){
+    datasets[[database[entry, "dataset"]]] <- ingest_data_default(database[entry, ])
+  } else if (database[entry, "type"] == "noStats") {
+    datasets[[database[entry, "dataset"]]] <- ingest_data_noStats(database[entry, ])
+  }
+}
+return(datasets)
 }
 
 #load_data()
@@ -82,9 +82,7 @@ load_data_wide <- function() {
   database <- read.csv(METADATA_PATH)
   datasets <- list()
   for(entry in 1:nrow(database)) {
-      datasets[[database[entry, "dataset"]]] <- ingest_data_wide(database[entry, ])
-    }
+    datasets[[database[entry, "dataset"]]] <- ingest_data_wide(database[entry, ])
+  }
   return(datasets)
-}
-
-#load_data_wide()
+  
