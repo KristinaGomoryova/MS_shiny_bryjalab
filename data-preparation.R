@@ -53,7 +53,8 @@ ingest_data_noStats <- function(param) {
 load_data <- function() {
   database <- read.csv(METADATA_PATH)
   datasets <- list()
-}
+
+
 for(entry in 1:nrow(database)) {
   if (database[entry, "type"] == "default"){
     datasets[[database[entry, "dataset"]]] <- ingest_data_default(database[entry, ])
@@ -61,7 +62,7 @@ for(entry in 1:nrow(database)) {
     datasets[[database[entry, "dataset"]]] <- ingest_data_noStats(database[entry, ])
   }
 }
-return(datasets)
+ return(datasets)
 }
 
 #load_data()
