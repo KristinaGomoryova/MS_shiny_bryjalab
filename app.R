@@ -171,15 +171,25 @@ server <- function(input, output, session){
       return()
     }
     selected_df <- datasetInput() %>% dplyr::select(input$logFC, input$pvalue, input$annotation, X)
-    colnames(selected_df) <- c("logFC", "pvalue", "annotation", "X")
-    
-    selected_df <- selected_df %>%
-      mutate(col = case_when(
-        pvalue < 0.05 & logFC > 1 ~ "up",
-        pvalue < 0.05 & logFC < -1 ~ "down",
-        TRUE ~ "ns"
-      ))
-    
+   
+    if(length(colnames(selected_df)) == 4) {
+      colnames(selected_df) <- c("logFC", "pvalue", "annotation", "X")
+      selected_df <- selected_df %>%
+        mutate(col = case_when(
+          pvalue < 0.05 & logFC > 1 ~ "up",
+          pvalue < 0.05 & logFC < -1 ~ "down",
+          TRUE ~ "ns"
+        ))
+    } else {
+      selected_df <- data.frame(
+        logFC=numeric(0),
+        pvalue=numeric(0),
+        annotation=character(0),
+        X=numeric(0),
+        col=character(0)
+      )
+    }
+
     selected_df
   })
   

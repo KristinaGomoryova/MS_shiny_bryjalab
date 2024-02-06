@@ -1,0 +1,97 @@
+X,MajorityProteinIDs,ProteinNames,GeneID,logFC_RNF122.CTRL,adjpval_RNF122.CTRL
+1,A0A1B0GTU1;O75152,Zinc finger CCCH domain-containing protein 11A,ZC3H11A,-5.33E-15,1
+2,B2RNG4,?,TRIM6-TRIM34,-5.33E-15,1
+3,O00264,Membrane-associated progesterone receptor component 1,PGRMC1,1.18076766,0.531409227
+4,O15230,Laminin subunit alpha-5,LAMA5,-5.33E-15,1
+5,O15504,Nucleoporin-like protein 2,NUP42,-5.33E-15,1
+6,O60493,Sorting nexin-3,SNX3,-5.33E-15,1
+7,O60566,Mitotic checkpoint serine/threonine-protein kinase BUB1 beta,BUB1B,1.066456005,0.531409227
+8,O75352,Mannose-P-dolichol utilization defect 1 protein,MPDU1,0.692002349,0.531409227
+9,P00533,Epidermal growth factor receptor,EGFR,-5.33E-15,1
+10,P20929,Nebulin,NEB,-5.33E-15,1
+11,P33240,Cleavage stimulation factor subunit 2,CSTF2,-5.33E-15,1
+12,P62280,40S ribosomal protein S11,RPS11,-5.33E-15,1
+13,P82094,TATA element modulatory factor,TMF1,1.443970796,0.531409227
+14,Q13049,E3 ubiquitin-protein ligase TRIM32,TRIM32,-5.33E-15,1
+15,Q13492,Phosphatidylinositol-binding clathrin assembly protein,PICALM,1.050749268,0.531409227
+16,Q6ZNB6,NF-X1-type zinc finger protein NFXL1,NFXL1,0.962903899,0.531409227
+17,Q6ZU52,Uncharacterized protein KIAA0408,KIAA0408,-5.33E-15,1
+18,Q8NHB1,Olfactory receptor 2V1,OR2V1,-5.33E-15,1
+19,Q8TBZ5,Zinc finger protein 502,ZNF502,-5.33E-15,1
+20,Q8WZ42,Titin,TTN,-5.33E-15,1
+21,Q92995,Ubiquitin carboxyl-terminal hydrolase 13,USP13,1.053838736,0.531409227
+22,Q99996,A-kinase anchor protein 9,AKAP9,0.36837248,0.531409227
+23,Q9H3U1,Protein unc-45 homolog A,UNC45A,1.423559496,0.531409227
+24,Q9H7Y0,Deleted in autism-related protein 1,DIPK2B,-5.33E-15,1
+25,Q9HD20,Manganese-transporting ATPase 13A1,ATP13A1,-5.33E-15,1
+26,Q9NRA8,Eukaryotic translation initiation factor 4E transporter,EIF4ENIF1,-5.33E-15,1
+27,Q9P0L1,Zinc finger protein with KRAB and SCAN domains 7,ZKSCAN7,-5.33E-15,1
+28,Q9UID3,Vacuolar protein sorting-associated protein 51 homolog,VPS51,0.94329979,0.531409227
+29,Q9UPQ9,Trinucleotide repeat-containing gene 6B protein,TNRC6B,0.814886658,0.531409227
+30,Q9Y2H0,Disks large-associated protein 4,DLGAP4,-5.33E-15,1
+31,Q9Y3P4,Rhomboid domain-containing protein 3,RHBDD3,1.457447837,0.531409227
+32,Q9Y4J8,Dystrobrevin alpha,DTNA,0.087970795,0.547765515
+33,A6NKL6,Transmembrane protein 200C,TMEM200C,0.625033949,1
+34,O00571,ATP-dependent RNA helicase DDX3X,DDX3X,3.183825532,0.01847803
+35,O00763,Acetyl-CoA carboxylase 2;Biotin carboxylase,ACACB,-1.873871399,0.105503942
+36,O14545,TRAF-type zinc finger domain-containing protein 1,TRAFD1,2.190024359,0.025999139
+37,O14964,Hepatocyte growth factor-regulated tyrosine kinase substrate,HGS,9.678406155,0.00074
+38,O43143,Pre-mRNA-splicing factor ATP-dependent RNA helicase DHX15,DHX15,-0.478137804,0.620139424
+39,P05141,"ADP/ATP translocase 2;ADP/ATP translocase 2, N-terminally processed",SLC25A5,-0.742225215,0.319111983
+40,P05166,"Propionyl-CoA carboxylase beta chain, mitochondrial",PCCB,-2.537681944,0.246058704
+41,P07910,Heterogeneous nuclear ribonucleoproteins C1/C2,HNRNPC,-0.27520705,0.927707787
+42,P08670,Vimentin,VIM,6.19696466,0.026393203
+43,P09651;A0A2R8Y4L2,"Heterogeneous nuclear ribonucleoprotein A1;Heterogeneous nuclear ribonucleoprotein A1, N-terminally processed",HNRNPA1,1.740199496,0.319111983
+44,P10809,"60 kDa heat shock protein, mitochondrial",HSPD1,2.614323386,0.405637842
+45,P11021,78 kDa glucose-regulated protein,HSPA5,8.592005211,0.012565765
+46,P11137,Microtubule-associated protein 2,MAP2,-3.993814159,0.065030139
+47,P11142,Heat shock cognate 71 kDa protein,HSPA8,1.201576039,0.121357116
+48,P11586,"C-1-tetrahydrofolate synthase, cytoplasmic;Methylenetetrahydrofolate dehydrogenase;Methenyltetrahydrofolate cyclohydrolase;Formyltetrahydrofolate synthetase;C-1-tetrahydrofolate synthase, cytoplasmic, N-terminally processed",MTHFD1,-0.756613643,0.531409227
+49,P12236,"ADP/ATP translocase 3;ADP/ATP translocase 3, N-terminally processed",SLC25A6,1.574156695,0.531409227
+50,P13667,Protein disulfide-isomerase A4,PDIA4,2.211656661,0.024583777
+51,P14174,Macrophage migration inhibitory factor,MIF,-1.12846556,0.258864192
+52,P14314,Glucosidase 2 subunit beta,PRKCSH,6.013998196,0.023591143
+53,P17844,Probable ATP-dependent RNA helicase DDX5,DDX5,0.652093933,0.497365533
+54,Q93079;Q5QNW6;P23527,Histone H2B type 1-H;Histone H2B type 2-F;Histone H2B type 1-O,HIST1H2BH;HIST2H2BF;HIST1H2BO,-1.066814596,0.075679847
+55,P25398,40S ribosomal protein S12,RPS12,-0.104970063,1
+56,P31930,"Cytochrome b-c1 complex subunit 1, mitochondrial",UQCRC1,0.03145127,1
+57,P38646,"Stress-70 protein, mitochondrial",HSPA9,-1.360855933,0.175463565
+58,P60842;Q14240;P38919,"Eukaryotic initiation factor 4A-I;Eukaryotic initiation factor 4A-II;Eukaryotic initiation factor 4A-II, N-terminally processed;Eukaryotic initiation factor 4A-III;Eukaryotic initiation factor 4A-III, N-terminally processed",EIF4A1;EIF4A2;EIF4A3,0.830002918,0.768306339
+59,Q71UM5;P42677,40S ribosomal protein S27-like;40S ribosomal protein S27,RPS27L;RPS27,-0.482752444,0.209494186
+60,P46013,Antigen KI-67,MKI67,4.021248131,0.019989428
+61,P49257,Protein ERGIC-53,LMAN1,4.26270109,0.00227561
+62,P49790,Nuclear pore complex protein Nup153,NUP153,-0.874431066,0.105991111
+63,P50851,Lipopolysaccharide-responsive and beige-like anchor protein,LRBA,8.198257441,0.004629329
+64,P52272,Heterogeneous nuclear ribonucleoprotein M,HNRNPM,0.271978415,0.927707787
+65,P58876,Histone H2B type 1-D,H2BC5,-1.645751596,0.035383065
+66,P61313,60S ribosomal protein L15,RPL15,-0.921985145,0.083095176
+67,P62249,40S ribosomal protein S16,RPS16,-1.152711761,0.043214277
+68,P62263,40S ribosomal protein S14,RPS14,-1.181121793,0.027233339
+69,P62633,Cellular nucleic acid-binding protein,CNBP,-0.851970694,0.16598141
+70,Q16778;P62807;Q99880;Q99879;Q99877;P33778;Q96A08;Q8N257,Histone H2B type 2-E;Histone H2B type 1-C/E/F/G/I;Histone H2B type 1-L;Histone H2B type 1-M;Histone H2B type 1-N;Histone H2B type 1-B;Histone H2B type 1-A;Histone H2B type 3-B,HIST2H2BE;HIST1H2BC;HIST1H2BL;HIST1H2BM;HIST1H2BN;HIST1H2BB;HIST1H2BA;HIST3H2BB,-1.391749101,0.075679847
+71,P62857,40S ribosomal protein S28,RPS28,-0.889136805,0.315558809
+72,P63151,Serine/threonine-protein phosphatase 2A 55 kDa regulatory subunit B alpha isoform,PPP2R2A,-2.135965201,0.248689589
+73,P68371;P04350,Tubulin beta-4B chain;Tubulin beta-4A chain,TUBB4B;TUBB4A,0.110715914,1
+74,Q6NXT2;Q71DI3;Q16695;P84243;P68431;Q5TEC6,Histone H3.3C;Histone H3.2;Histone H3.1t;Histone H3.3;Histone H3.1;Histone H3,H3F3C;HIST2H3A;HIST3H3;H3F3A;HIST1H3A;HIST2H3PS2,-1.416887536,0.026393203
+75,P69905,Hemoglobin subunit alpha,HBA1,0.056543985,1
+76,Q01469,"Fatty acid-binding protein, epidermal",FABP5,-2.814105626,0.293639367
+77,Q07666,"KH domain-containing, RNA-binding, signal transduction-associated protein 1",KHDRBS1,-0.876242793,0.576737432
+78,Q08378,Golgin subfamily A member 3,GOLGA3,1.008311902,0.912970017
+79,Q13085,Acetyl-CoA carboxylase 1;Biotin carboxylase,ACACA,-1.499101105,0.028144366
+80,Q14457,Beclin-1,BECN1,-0.624279602,1
+81,Q14789,Golgin subfamily B member 1,GOLGB1,8.58709748,0.000605
+82,Q14BN4,Sarcolemmal membrane-associated protein,SLMAP,-1.786660381,0.693291969
+83,Q16527,Cysteine and glycine-rich protein 2,CSRP2,-0.6733324,0.285453392
+84,Q5JTV8,Torsin-1A-interacting protein 1,TOR1AIP1,6.693278522,0.045315239
+85,Q5T4S7,E3 ubiquitin-protein ligase UBR4,UBR4,2.032105576,0.667224022
+86,Q8IZP0,Abl interactor 1,ABI1,-1.370637805,0.229878802
+87,Q8NBS9,Thioredoxin domain-containing protein 5,TXNDC5,3.745259303,0.130859723
+88,Q92841,Probable ATP-dependent RNA helicase DDX17,DDX17,-0.077823124,0.954173334
+89,Q96A65,Exocyst complex component 4,EXOC4,5.148595222,0.033570853
+90,Q96PK6,RNA-binding protein 14,RBM14,-1.795047516,0.175463565
+91,Q9BYB4,Guanine nucleotide-binding protein subunit beta-like protein 1,GNB1L,0.396318357,1
+92,Q9HA64,Ketosamine-3-kinase,FN3KRP,-1.018670837,0.116273768
+93,Q9HCC0,"Methylcrotonoyl-CoA carboxylase beta chain, mitochondrial",MCCC2,-2.371273578,0.531409227
+94,Q9P258,Protein RCC2,RCC2,-0.48910193,1
+95,Q9UGI8,Testin,TES,2.54875195,0.028144366
+96,Q9Y6Y8,SEC23-interacting protein,SEC23IP,4.11921747,0.007161592
