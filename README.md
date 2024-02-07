@@ -23,7 +23,7 @@ The application can be run also locally, using the model dataset, which is a par
 4. Run the shiny application, either as http://localhost:3838, or http://public_IP:3838
 
 ## Adding a new dataset
-New dataset should be added to the `/database` folder. It is preferred, that upon addition of a new dataset, all datasets would get updated gene names in order to synchronize them.
+New dataset should be added to the `/database` folder. It is preferred, that upon addition of a new dataset, all datasets would get updated gene names in order to synchronize them. A model dataset, `2006_RNF43.csv`, related to publication by [Radaszkiewicz et al.(2021)](https://elifesciences.org/articles/65759) is provided.
 
 This can be done running the updateGeneNames.R script, which, however, requires installation of R, and specific packages, `dplyr`, `here` and `HGNCHelper`. 
 
