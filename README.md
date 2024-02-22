@@ -20,14 +20,14 @@ Currently the repository contains two metadata.R scripts: `metadata.R` containin
 
 ## Running the shiny app using RStudio
 
-1. 1. Clone this github repository locally
-2. Copy the datasets to be displayed into the `/database` folder (be sure you added them also to the `database/metadata.R`)
+1. Clone this github repository locally
+2. Copy the datasets to be displayed into the `/database` folder (be sure you added them also to the `database/metadata.R`). Model data are already in the `/database` folder.
 3. Run the `app.R` script
 
 ## Running the shiny app using Docker
 
 1. Clone this github repository locally 
-2. Copy the datasets to be displayed into the `/database` folder (be sure you added them also to the `database/metadata.R`)
+2. Copy the datasets to be displayed into the `/database` folder (be sure you added them also to the `database/metadata.R`). Model data are already in the `/database` folder.
 3. Mount the data to the docker image, using a similar command as e.g.:
 `docker run -p 3838:3838 -v /home/ubuntu/MS_shiny_bryjalab/database/:/MS_shiny_bryjalab/database/ kristinagomoryova/app`
 4. Run the shiny application, either as http://localhost:3838, or http://*public_IP*:3838
