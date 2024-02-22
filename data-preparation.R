@@ -6,7 +6,7 @@ library(here)
 library(stringr)
 
 # Prepare the data
-METADATA_PATH <- here('database', 'metadata.csv')
+METADATA_PATH <- here('database', 'metadata_model.csv')
 
 update_genenames <- function(){
   #  date <- as.character(Sys.Date())
@@ -86,4 +86,5 @@ load_data_wide <- function() {
     datasets[[database[entry, "dataset"]]] <- ingest_data_wide(database[entry, ])
   }
   return(datasets)
+}
   
