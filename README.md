@@ -14,6 +14,10 @@ The application can be run also locally, using the model dataset, which is a par
 
 # How to run the application
 
+**Comment related to running the model data**: 
+
+Currently the repository contains two metadata.R scripts: metadata.R containing information about datasets produced in Bryjalab (which are private), and metadata_model.R, which is intended to be used to run the model data. In case own data would be added, change the metadata information accordingly.
+
 ## Running the shiny app
 
 1. Clone this github repository locally
@@ -25,7 +29,7 @@ The application can be run also locally, using the model dataset, which is a par
 ## Adding a new dataset
 New dataset should be added to the `/database` folder. It is preferred, that upon addition of a new dataset, all datasets would get updated gene names in order to synchronize them. A model dataset, `2006_RNF43.csv`, related to publication by [Radaszkiewicz et al.(2021)](https://elifesciences.org/articles/65759) is provided.
 
-This can be done running the updateGeneNames.R script, which, however, requires installation of R, and specific packages, `dplyr`, `here` and `HGNCHelper`. 
+Gene names update can be done running the updateGeneNames.R script, which, however, requires installation of R, and specific packages, `dplyr`, `here` and `HGNCHelper`. 
 
 This can be done using commands:
 `sudo apt install r-base-core`
@@ -34,6 +38,8 @@ This can be done using commands:
 `install.packages("HGNCHelper")`
 
 The gene names update script can be run in the terminal using `Rscript updateGeneNames.R`
+
+Don't forget to update the metadata.R and also metadata.csv produced by the R script to include new dataset! 
 
 The new dataset will be displayed automatically upon refreshing the application in the browser.
 
