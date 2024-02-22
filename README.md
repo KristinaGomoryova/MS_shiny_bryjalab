@@ -14,17 +14,23 @@ The application can be run also locally, using the model dataset, which is a par
 
 # How to run the application
 
-**Comment related to running the model data**: 
+**Running the model data**: 
 
-Currently the repository contains two metadata.R scripts: metadata.R containing information about datasets produced in Bryjalab (which are private), and metadata_model.R, which is intended to be used to run the model data. In case own data would be added, change the metadata information accordingly.
+Currently the repository contains two metadata.R scripts: `metadata.R` containing information about datasets produced in Bryjalab (which are private), and `metadata_model.R`, which is intended to be used to run the model data. In case own data would be added, change the metadata information accordingly.
 
-## Running the shiny app
+## Running the shiny app using RStudio
 
-1. Clone this github repository locally
-2. Copy the datasets to be displayed into the `/database` folder
+1. 1. Clone this github repository locally
+2. Copy the datasets to be displayed into the `/database` folder (be sure you added them also to the `database/metadata.R`)
+3. Run the `app.R` script
+
+## Running the shiny app using Docker
+
+1. Clone this github repository locally 
+2. Copy the datasets to be displayed into the `/database` folder (be sure you added them also to the `database/metadata.R`)
 3. Mount the data to the docker image, using a similar command as e.g.:
 `docker run -p 3838:3838 -v /home/ubuntu/MS_shiny_bryjalab/database/:/MS_shiny_bryjalab/database/ kristinagomoryova/app`
-4. Run the shiny application, either as http://localhost:3838, or http://public_IP:3838
+4. Run the shiny application, either as http://localhost:3838, or http://*public_IP*:3838
 
 ## Adding a new dataset
 New dataset should be added to the `/database` folder. It is preferred, that upon addition of a new dataset, all datasets would get updated gene names in order to synchronize them. A model dataset, `2006_RNF43.csv`, related to publication by [Radaszkiewicz et al.(2021)](https://elifesciences.org/articles/65759) is provided.
