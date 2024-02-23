@@ -8,7 +8,7 @@ The shiny application is composed of 3 modules:
 - 'Find protein' module allows searching for protein of interest across all available datasets and its associated statistics
 - 'Description' module provides an information how the dataset was produced in our lab and on the proteomics core facility
 
-The application was written in R, version 4.3.1, using Shiny library, version 1.7.5. The web version of application can be accessed only from the MUNI IP address range for the security reasons - for this reason, also data (containing statistical results of contrasts of interest) are stored within a private repository. 
+The application was written in R, version 4.3.1, using [Shiny library](https://shiny.posit.co/), version 1.7.5. The web version of application can be accessed only from the MUNI IP address range for the security reasons - for this reason, also data (containing statistical results of contrasts of interest) are stored within a private repository. 
 
 The application can be run also locally, using the model dataset, which is a part of already published manuscript.
 
