@@ -25,7 +25,7 @@ COPY app.R /app/
   COPY data-preparation.R /app/
   
   # Run the Shiny app
-  CMD ["R", "-e", "shiny::runApp('/shinyapp-bryjalab/app.R', host='0.0.0.0', port=3838)"]
+  CMD ["R", "-e", "shiny::runApp('/app/app.R', host='0.0.0.0', port=3838)"]
 
 # Expose the port that the app will run on
 EXPOSE 3838
