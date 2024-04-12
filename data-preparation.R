@@ -6,7 +6,7 @@ library(here)
 library(stringr)
 
 # Prepare the data
-METADATA_PATH <- here('database', 'metadata_model.csv')
+METADATA_PATH <- here('database', 'metadata.csv')
 
 update_genenames <- function(){
   #  date <- as.character(Sys.Date())
