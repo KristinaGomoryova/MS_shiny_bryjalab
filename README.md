@@ -12,6 +12,30 @@ The application was written in R, version 4.3.1, using [Shiny library](https://s
 
 The application can be run also locally, using the model dataset, which is a part of already published manuscript.
 
+# Quick start (for Bryjalab)
+
+**Important** Docker image needs to be built locally, it won't work with the virtual instance!! If any changes in 
+`app.R`, `data-preparation.R` or `updateGeneNames.R` scripts are done, docker image needs to be built again.
+
+Docker image can be built (locally using PowerShell) with:
+`docker build -t kristinagomoryova/app:1.0.1 .` (adjust the versioning!)
+
+`docker push kristinagomoryova/app:1.0.1`
+
+Then on the VM:
+
+`docker pull kristinagomoryova/app:1.0.1`
+
+If you change any of the scripts, don't forget to do also `git pull` to update the repository.
+
+**To add new dataset:**
+
+1. Copy the dataset in the VM `\database` folder (e.g. using `mc` commander)
+2. Adjust the metadata.csv file in the `\database` folder (add new record, it's not needed to run metadata.R)
+3. Run the `updateGeneNames.R` script using `Rscript updateGeneNames.R`. Gene names in all files will be automatically updated.
+4. Run the `data-preparation.R` script using `Rscript data-preparation.R` 
+5. Run the `docker run -p 3838:3838 -v /home/ubuntu/MS_shiny_bryjalab/database/:/app/database/ kristinagomoryova/app:1.0.1`. Pay attention to backslashes and versioning of the docker image.
+
 # How to run the application
 
 **Running the model data**: 
