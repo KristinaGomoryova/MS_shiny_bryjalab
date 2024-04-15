@@ -18,7 +18,9 @@ updateCurrentMap <- function() {
 # Update gene names
 updateGeneNames <- function() {
   # Get the input datasets in the database directory:
-  filenames <- list.files(path=getwd(), pattern = ".csv", full.names = TRUE)
+  tmp.path <- "C:/Users/kika2/Documents/shinyapp_20240411/MS_shiny_bryjalab/database"
+#  filenames <- list.files(path=getwd(), pattern = ".csv", full.names = TRUE)
+  filenames <- list.files(path=tmp.path, pattern = ".csv", full.names = TRUE)
   
   # Get the newest genename
   updateCurrentMap()
@@ -38,9 +40,10 @@ updateGeneNames <- function() {
       map = genenames_newest,
       unmapped.as.na = FALSE)
     tmp$GeneID <- tmp.update$Suggested.Symbol
-    write.csv(tmp, file=filenames[i], quote=FALSE, row.names=FALSE)
+    write.csv(tmp, file=filenames[i], row.names=FALSE)
   }
 }
 
 # Run the function
 updateGeneNames()
+
