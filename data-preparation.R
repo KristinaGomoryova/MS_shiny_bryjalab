@@ -54,7 +54,6 @@ load_data <- function() {
   database <- read.csv(METADATA_PATH)
   datasets <- list()
 
-
 for(entry in 1:nrow(database)) {
   if (database[entry, "type"] == "default"){
     datasets[[database[entry, "dataset"]]] <- ingest_data_default(database[entry, ])
